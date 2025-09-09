@@ -415,9 +415,9 @@
                     botRunning = false;
                 }
 
-                // Update metrics
-                $('#portfolio-value').text(' + data.portfolio_value.toFixed(2));
-                $('#cash-balance').text(' + data.cash.toFixed(2));
+                // Update metrics - FIXED: Added missing '$' symbols
+                $('#portfolio-value').text('$' + data.portfolio_value.toFixed(2));
+                $('#cash-balance').text('$' + data.cash.toFixed(2));
                 $('#daily-trades').text(data.daily_trades || 0);
                 
                 const totalModels = data.models_trained.traditional + data.models_trained.deep_learning;
@@ -493,9 +493,9 @@
                         <tr>
                             <td><strong>${symbol}</strong></td>
                             <td>${position.quantity}</td>
-                            <td>${position.avg_price.toFixed(2)}</td>
-                            <td>${position.current_price.toFixed(2)}</td>
-                            <td class="${pnlClass}">${position.unrealized_pnl.toFixed(2)}</td>
+                            <td>$${position.avg_price.toFixed(2)}</td>
+                            <td>$${position.current_price.toFixed(2)}</td>
+                            <td class="${pnlClass}">$${position.unrealized_pnl.toFixed(2)}</td>
                             <td>
                                 <button class="btn btn-sm btn-danger" onclick="closePosition('${symbol}')">
                                     <i class="fas fa-times"></i> Close
@@ -531,8 +531,8 @@
                             <td><strong>${trade.symbol}</strong></td>
                             <td class="${actionClass}">${trade.action}</td>
                             <td>${trade.quantity}</td>
-                            <td>${trade.price.toFixed(2)}</td>
-                            <td class="${pnlClass}">${trade.pnl.toFixed(2)}</td>
+                            <td>$${trade.price.toFixed(2)}</td>
+                            <td class="${pnlClass}">$${trade.pnl.toFixed(2)}</td>
                         </tr>
                     `);
                 });
