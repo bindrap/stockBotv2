@@ -8,6 +8,8 @@ import asyncio
 import sys
 from datetime import datetime
 from ib_insync import IB, Stock, util
+import nest_asyncio
+nest_asyncio.apply()
 
 class IBKRTester:
     def __init__(self, host='127.0.0.1', port=7497, client_id=1):
@@ -106,7 +108,7 @@ class IBKRTester:
                 
                 # Request market data
                 ticker = self.ib.reqMktData(contract, '', False, False)
-                await util.sleep(2)  # Wait for data
+                await asyncio.sleep(2)  # Wait for data
                 
                 # Check data
                 if ticker.last and ticker.last == ticker.last:  # Not NaN
